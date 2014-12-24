@@ -236,6 +236,12 @@ case class GremlinScala[End, Labels <: HList](traversal: GraphTraversal[_, End])
 
   def until(breakLabel: String, loops: Int) =
     GremlinScala[End, Labels](traversal.until(breakLabel, loops))
+
+  def choose[A](choosePredicate: End => Boolean, trueChoice: GremlinScala[A, _], falseChoice: GremlinScala[A, _]) =
+    GremlinScala[A, Labels](traversal.choose(
+      choosePredicate, 
+      trueChoice.traversal,
+      falseChoice.traversal))
 }
 
 case class ScalaGraph(graph: Graph) extends AnyVal {
