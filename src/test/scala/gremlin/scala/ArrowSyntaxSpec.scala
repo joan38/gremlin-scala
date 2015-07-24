@@ -17,4 +17,14 @@ class ArrowSyntaxSpec extends FunSpec with Matchers {
     e.inVertex shouldBe london
     e.outVertex shouldBe paris
   }
+  
+  // TODO: This case needs to be checked by macros
+  // if("should not compile") {
+  //   val graph: Graph = TinkerGraph.open
+
+  //   val paris = graph.addVertex("Paris")
+  //   val london = graph.addVertex("London")
+    
+  //   """val e = paris -- "eurostar" """ shouldNot compile
+  // }
 }
